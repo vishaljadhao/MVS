@@ -1,0 +1,52 @@
+extends layout
+
+block content
+
+	article(class="main-app")
+		section.auth-header(ng-controller="CollapseCtrl")
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header.left-section
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand(href='/') Logo							
+							div(class="collapse navbar-collapse navigation",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right.right-section
+									li(ng-controller="DropdownCtrl")
+										div(uib-dropdown,on-toggle="toggled(open)", class="user-dropdown")
+											div.user-name
+												span #{user.fullName}
+											a(href,id="user-dropdown",uib-dropdown-toggle)
+												i(class="fa fa-angle-down",aria-hidden="true")
+											ul(class="dropdown-menu",uib-dropdown-menu,aria-labelledby="user-dropdown")
+												li(role="menuitem")
+													a(href="/partner-settings") My Settings
+												li(role="menuitem")
+													a(href="/auth/signout") Logout
+	article(class="aside-container clearfix main-app")
+		div.aside-left
+			div.container
+				div.row
+					div.col-sm-12
+						h4 Aside Navigation
+		div.aside-right
+			section.breadcrumb-section
+				div.container
+					div.row
+						ol.col-sm-10.col-sm-offset-1.breadcrumb
+							li.breadcrumb-item.active Dashboard
+			section.account-section
+				div.container
+					div.row.dashboard-nav
+						div.col-sm-10.col-sm-offset-1.white-page-section
+							p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader

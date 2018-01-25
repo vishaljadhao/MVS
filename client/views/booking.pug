@@ -1,0 +1,140 @@
+extends layout
+
+block content
+
+	article(class="main-app")
+		section.auth-header(ng-controller="CollapseCtrl")
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header.left-section
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand(href='/') Logo							
+							div(class="collapse navbar-collapse navigation",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right.right-section
+									li(ng-controller="DropdownCtrl")
+										div(uib-dropdown,on-toggle="toggled(open)", class="user-dropdown")
+											div.user-name
+												span #{user.fullName}
+											a(href,id="user-dropdown",uib-dropdown-toggle)
+												i(class="fa fa-angle-down",aria-hidden="true")
+											ul(class="dropdown-menu",uib-dropdown-menu,aria-labelledby="user-dropdown")
+												li(role="menuitem")
+													a(href="/") Home
+												li(role="menuitem")
+													a(href="/dashboard") My Dashboard
+												li(role="menuitem")
+													a(href="/auth/signout") Logout
+		section.breadcrumb-section
+			div.container
+				div.row
+					ol.col-sm-10.col-sm-offset-1.breadcrumb
+						li.breadcrumb-item
+							a(href='/') Home
+						li.breadcrumb-item.active Booking
+		section.booking-section(ng-controller="BookingController")
+			div.container
+				div.row
+					div.col-sm-10.col-sm-offset-1.white-page-section
+						div.row.service-center-info
+							.col-sm-10
+								h3.center-name(ng-bind="partner.ServiceCenterName")
+								p.center-location
+									span(class="fa fa-map-marker")
+									span(ng-bind="partner.Area")
+							.col-sm-2.rating-section
+								h3.text-center RATING
+								p.text-center 4
+						hr
+						div.row.request-booking-section
+							div.col-sm-12
+								.row
+									.col-sm-3
+										h4.label-text.text-center Your booking progress
+									.col-sm-8
+										h4.label-text.text-center Bike Service and Repair						
+								.row(ng-controller="TabsCtrl")
+									.col-sm-3.booking-wizard-nav
+										.navbar
+											.navbar-inner
+												ul.TabReprestative.booking-track-ul
+													li(ng-class="{BkngActiveTab: bookingTabInd == 1}", ng-disabled="(bookingTabInd >= 0)? false:true")
+														span.number 1
+														span.text-label Vehicle Information
+													li(ng-class="{BkngActiveTab: bookingTabInd == 2}", ng-disabled="(bookingTabInd >= 1)? false:true")
+														span.number 2
+														span.text-label Service Type
+													li(ng-class="{BkngActiveTab: bookingTabInd == 3}", ng-disabled="(bookingTabInd >= 2)? false:true")
+														span.number 3
+														span.text-label General Servicing
+													li(ng-class="{BkngActiveTab: bookingTabInd == 4}", ng-disabled="(bookingTabInd >= 3)? false:true",  ng-click="bookingTabInd = 4")
+														span.number 4
+														span.text-label Repairing
+													li(ng-class="{BkngActiveTab: bookingTabInd == 5}", ng-disabled="(bookingTabInd >= 4)? false:true",  ng-click="bookingTabInd = 5")
+														span.number 5
+														span.text-label Checkout &amp; Book
+									.col-sm-8
+										//- uib-progressbar.progress(value="bookingTabInd*10", max="50" )
+										uib-tabset(active='bookingTabInd' class='booking-tabs')
+											uib-tab(index="1" )
+												.well
+													h2 Step 1
+													input(type='text', ng-model='user.name', placeholder='Your name')
+											uib-tab(index="2" )
+												.well
+													h2 Step 2
+													input(type='text', ng-model='user.address', placeholder='Your address')
+											uib-tab(index="3" )
+												.well
+													h2 Step 3
+													input(type='text', ng-model='user.email', placeholder='Your Email')
+												.button-section.clearfix
+											uib-tab(index="4" )
+												.well
+													h2 Step 4
+													input(type='text', ng-model='user.password', placeholder='Your password')
+											uib-tab(index="5" )
+												.well
+													h2 Step 5
+													p
+														| Name:
+														span(ng-bind='user.name')
+													p
+														| Address:
+														span(ng-bind='user.address')
+													p
+														| Email:
+														span(ng-bind='user.email')
+													p
+														| Password:
+														span(ng-bind='user.password')
+													.button-section.clearfix
+														//- a.btn.btn-default.btn-lg.back( ng-click='bookingTabInd = 4') Back
+														button.succeed(ng-click="success()") Submit Request
+
+										.btn-wrapper.transitBtnsWrap
+											button(type="submit", ng-click="bookingTabInd = bookingTabInd - 1", ng-disabled="(bookingTabInd == 1)? true:false",class="btn default-btn prev-btn") Back 
+
+											button(type="submit", ng-click="bookingTabInd = bookingTabInd + 1",  ng-disabled="(bookingTabInd == 5)? true:false",class="btn default-btn next-btn") Next
+
+						hr
+						div.user-info.hide
+							- var name = user.fullName
+							span(ng-init='UserInfo.name = "'+name+'"')
+						div.user-info.hide
+							- var email = user.email
+							span(ng-init='UserInfo.email = "'+email+'"')
+						div.user-info.hide
+							- var phone = user.phoneNo
+							span(ng-init='UserInfo.phone = "'+phone+'"')
+							//span(ng-init='UserInfo.email = "'+email+'"')							
+							//span(ng-init='UserInfo.phone = "'+phone+'"')								
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader

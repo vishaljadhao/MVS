@@ -1,0 +1,147 @@
+extends layout
+
+block content
+
+	article(class="main-app")
+		section.auth-header.home-auth-header(ng-controller="CollapseCtrl")
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header.left-section
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand(href='/') Logo
+							.middle-section
+								div(ng-controller="UserLocationCtrl")
+									div.user-locate-btn(ng-show='$root.locateVal')
+										div(ng-click="locate()",class="locate-btn")
+											i(class="fa fa-map-marker", title="Share your location")
+											span Locate Me
+								div.input-container.auto-search-box(ng-controller="SearchController")
+									span.search-marker-icon
+									input(type="text",name="search",class="form-control search-field pac-input", ng-model="search",id="pac-input", placeholder="Search for location or landmarks")
+									span(title="Clear", class="clear-btn", id="clearBtn") &times;
+							div(class="collapse navbar-collapse navigation",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right.right-section
+									li(ng-controller="DropdownCtrl")
+										div(uib-dropdown,on-toggle="toggled(open)", class="user-dropdown")
+											div.user-name
+												span #{user.fullName}
+											a(href,id="user-dropdown",uib-dropdown-toggle)
+												i(class="fa fa-angle-down",aria-hidden="true")
+											ul(class="dropdown-menu",uib-dropdown-menu,aria-labelledby="user-dropdown")
+												li(role="menuitem")
+													a(href="/dashboard") Dashboard
+												li(role="menuitem")
+													a(href="/account") My Account
+												li(role="menuitem")
+													a(href="/auth/signout") Logout
+	article(class="main-app main-app-section",ng-controller="MapController")
+		section.filter-section
+			div.container
+				div.row
+					div.col-sm-12
+						div.filters.clearfix
+							div.pull-right
+								a(href,ng-click="ShowMap()") 
+									span(class="fa fa-map-marker")
+									span Map View
+								a(href,ng-click="ShowGrid()") 
+									span(class="fa fa-th-large")
+									span Grid View
+		section(id="map",ng-show="MapShow", class="map-section")
+			div.container
+				div.row
+					div.col-sm-12
+						div.map-container
+							div.map-canvas#mapCanvas
+							div#sidebar.sidebar
+								.sidebar-heading
+									span(class="text-center") Overview
+								.sidebar-middle-section
+									h3.center-name(ng-bind="centername")
+									div.address
+										i(class="")
+										span(ng-bind="location", class="")
+									div.pricing
+										span.label-text Pricing
+										span.fare &#8377; {{fare}}
+											i /service										
+									div.reviews
+								a(class="btn default-btn book-appoinment-btn", href="/providers/{{id}}", target="_blank") Book A Service
+		section.breadcrumb-section(ng-show="GridShow")
+			div.container
+				div.row
+					ol.col-sm-10.col-sm-offset-1.breadcrumb
+						li.breadcrumb-item
+							a(href='/') Home
+						li.breadcrumb-item.active Grid View
+		section(id="grid",ng-show="GridShow",class="grid-section")
+			div.container
+				div.row
+					div.col-sm-10.col-sm-offset-1.white-page-section
+						div.grid-upper-head
+							div.row
+								div.col-sm-3
+									h4 Filter By
+								div.col-sm-9
+									div.row
+										div.col-sm-6
+											h4 
+												strong {{totalItems}}
+												|&nbsp;Service stations
+										div.col-sm-6.text-right
+											h4 Sort By&nbsp;&nbsp;
+												select
+													option Pricing
+													option Rating
+						div.row
+							div.col-sm-3
+								
+
+							div.col-sm-9
+								ul.grid-list.row
+									li.col-sm-6(ng-repeat="item in gridItem.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))")
+										div(class="grid-item",target="_blank")
+											div.grid-upper.row
+												//- div.placeholder.col-sm-4
+												//- 		img(ng-src="{{img}}")
+												div.partner-info.col-sm-12
+													span.center-name(ng-bind="item.ServiceCenterName")
+													p.center-location
+														span(class="")
+														span(ng-bind="item.Area")
+											div.captions.row
+												div.col-sm-6
+													div.ratings-reviews
+														span.ratings 4.5 *
+														a(href="#") Reviews
+												div.col-sm-6
+													div.fare
+														p starts from
+														span(class="") &#8377;&nbsp;
+														span.amount(ng-bind="item.BasicServicingFare")
+														span /Service
+											div.book-button-section.row
+												div.col-sm-12
+													a(href="/providers/{{item.id}}", class="btn default-btn", target="_blank") Book
+
+								div.row.pagination-div
+									div.col-sm-5
+										div.view-by
+											| View&nbsp;
+											select(ng-options="item for item in viewItems",ng-model="viewby",ng-change='setItemsPerPage(viewby)')
+											| &nbsp;records at a time.
+									div.col-sm-7.text-right
+										ul.pagination-sm(uib-pagination='', boundary-links='true', total-items='totalItems', ng-model='currentPage', ng-change="pageChanged()", items-per-page="itemsPerPage", previous-text='‹', next-text='›', first-text='«', last-text='»')
+				
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader
+
+block page-script	

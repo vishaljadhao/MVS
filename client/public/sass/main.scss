@@ -1,0 +1,1100 @@
+/*----------- Predefined Variables ---------- */
+
+/* Fonts */
+$Montserrat-Black : 'Montserrat-Black';
+$Montserrat-Bold : 'Montserrat-Bold';
+$Montserrat-ExtraLight : 'Montserrat-ExtraLight';
+$Montserrat-Light : 'Montserrat-Light';
+$Montserrat-Medium : 'Montserrat-Medium';
+$Montserrat-SemiBold : 'Montserrat-SemiBold';
+$Montserrat-Thin : 'Montserrat-Thin';
+$Montserrat-Regular : 'Montserrat-Regular';
+
+
+$Raleway-Black : 'Raleway-Black';
+$Raleway-Bold : 'Raleway-Bold';
+$Raleway-ExtraLight : 'Raleway-ExtraLight';
+$Raleway-Light : 'Raleway-Light';
+$Raleway-Medium : 'Raleway-Medium';
+$Raleway-SemiBold : 'Raleway-SemiBold';
+$Raleway-Thin : 'Raleway-Thin';
+$Raleway-Regular : 'Raleway-Regular';
+
+$Proxima-Nova : 'Proxima-Nova';
+
+/* Colors */
+$blue-color: #48B0F7;
+$green-color: #10CFBD;
+$white-color: #FFFFFF;
+$gray-color: #3B4752;
+
+
+/* Background */
+$blue-background: #48B0F7;
+$green-background: #10CFBD;
+$gray-background: #3B4752;
+
+
+/*----------- Default Css Start ---------- */
+body {
+    margin: 0;
+    padding: 0;
+    color: #626262;
+    font-family: $Proxima-Nova;
+    font-size: 17px;
+    background: #eee;
+}
+
+header.index-header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    color: #fff;
+    position: absolute;
+}
+
+.navbar-default {
+    background-color: transparent;    
+    margin-bottom: 0;
+    border: 0 none;
+    .navbar-brand {
+        color: #626262;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 26px;
+        text-transform: uppercase;
+    }
+    .navbar-nav > li > a {
+        font-size: 15px;
+        color: #626262;
+        font-family: $Montserrat-Regular
+    }
+}
+
+.index-header .navbar-default {    
+    .navbar-brand {
+        color: $white-color;        
+    }
+    .navbar-nav > li > a {
+        color: $white-color;        
+    }
+}
+
+h1 {
+    font-size: 29px;
+    line-height: 33px;
+    letter-spacing: normal;    
+    font-family: $Raleway-Light;
+}
+
+h4 {
+    font-family: $Montserrat-Regular;
+    text-transform: uppercase;
+    font-size: 15px;
+    select {
+        font-family: $Proxima-Nova;
+        font-size: 16px;
+    }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    outline: 0;
+}
+a:hover {
+    text-decoration: none;
+}
+a {
+    color: #008bdb;
+}
+a.forgot-pass {
+    font-size: 16px;
+    text-align: right;
+    display: block;
+    font-weight: normal;
+    margin-top: 10px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    box-shadow: 0 0;
+    border: 0 none;
+    background: transparent;
+    height: 100%;
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+}
+.modal-open .fade.in {
+    height: 100%;
+    width: 100%;
+}
+.modal-backdrop.in {    
+    opacity: 1;
+    background-color: rgba(255,255,255,0.97);
+}
+.modal-body {        
+    width: 940px;
+    margin: auto;        
+}
+.close-btn-wrppaer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    line-height: 1;
+    i.fa.fa-times {
+        cursor: pointer;
+    }
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.loading-spiner-holder {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 9999;
+    text-align: center;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid #3498db;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.block {
+    display: block;
+}
+i.fa,
+span.fa {
+    margin-right: 6px;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background: none;
+    border: 0 none;
+}
+label {
+    font-family: $Montserrat-Light;
+    font-weight: normal;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: initial;
+    appearance: initial;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    position: relative;
+    border: 1px solid #ccc;
+}
+input[type="checkbox"]:checked {
+    border: 1px solid #008bdb !important;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 2px 2px 0px rgba(0, 139, 219, 0.0725);
+    -webkit-transition: border-color ease 1s;
+    -o-transition: border-color ease 1s;
+    transition: border-color ease 1s;
+}
+input[type="checkbox"]:checked:after {
+    content: "\2713";
+    color: #008bdb;
+    position: absolute;
+    font-size: 21px;
+    left: 50%;
+    font-weight: bold;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.error-div.text-center {
+    position: absolute;
+    height: 150px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    .big-message {
+        font-size: 29px;
+        line-height: 33px;
+        letter-spacing: normal;
+        font-family: "Raleway-Light";
+    }
+}
+
+button.btn.btn-default.form-button.gray-button {
+    width: 100%;
+    display: block;
+    height: 40px;
+    border-radius: 0;
+}
+
+/*------ Map Css --------*/
+.leaflet-right.leaflet-bottom {
+    top: 0 !important;
+    margin: auto !important;
+    width: 34px;
+    height: 64px;
+}
+.place-div {
+    position: relative;
+    input#pac-input {
+        padding-left: 34px;
+        padding-right: 40px;
+    }
+}
+.leaflet-control-attribution.leaflet-control {
+    display: none;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    color: #626262;
+    border-radius: 0 0;
+    span {
+        display: block;
+        font-size: 16px;
+    }
+    span.distance {
+        font-size: 14px;
+    }
+    span.center-name {
+        font-family: 'Raleway-Regular';
+        font-size: 18px;
+    }
+    span.ratings {
+        display: inline-block;
+        padding: 4px 8px;
+        background: green;
+        color: #fff;
+        line-height: 1;
+        margin-top: 10px;
+    }
+}
+.leaflet-popup-content {
+    margin: 20px;    
+}
+.leaflet-container a.leaflet-popup-close-button {    
+    width: 20px;
+    height: 18px;            
+    color: #000;
+    top: -20px;
+    right: -20px;
+}
+.leaflet-container .btn.default-btn.book-appoinment-btn {
+    color: #fff;
+}
+.leaflet-sidebar {
+    width: 350px;
+    span {
+        display: block;
+    }
+    .close {    
+        right: -41px;
+        top: 11px;
+        width: 42px;
+        height: 44px;
+        color: #626262;
+        font-size: 30px;
+        border-radius: 0;
+        line-height: 1.3;
+        font-weight: normal;
+        opacity: 1;
+        border-right: 2px solid #eee;
+        border-bottom: 2px solid #eee;
+        border-top: 2px solid #eee;
+        cursor: pointer;
+        z-index: 800;
+    }
+    .sidebar-heading {
+        padding: 8px 20px;
+        text-align: center;
+        border-bottom: 2px solid #eee;
+        font-size: 16px;
+    }
+    .sidebar-middle-section {
+        padding: 10px 20px;
+        height: 84%;
+    }
+    h3.center-name.ng-binding {
+        font-family: 'Raleway-Light';
+        font-size: 29px;
+    }
+    .address {
+        font-size: 16px;
+        color: #999;
+    }
+    div.pricing {
+        margin: 30px 0; 
+        span.label-text {
+            font-size: 18px;
+            font-family: 'Raleway-Light';
+        }
+        span.fare.ng-binding {
+            font-size: 16px;
+        }
+    }
+    div.reviews {
+        margin: 30px 0;   
+    }
+    > .leaflet-control {        
+        border-radius: 0;
+        border-color: #e6e6e6 !important;
+        padding: 0;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .btn.default-btn.book-appoinment-btn {
+        color: #fff;
+        width: 100%;
+        max-width: 100%;
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+    }
+}
+/*----------- Default Css End ---------- */
+
+/*----------- Base Css End ---------- */
+.container {
+    max-width: 1170px;
+    width: 100%;
+}
+.main-app .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 40px;
+}
+.input-container input.search-field {
+    border-left: 1px solid #ddd;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;    
+}
+.input-container .clear-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: block;
+    width: 16px;
+    text-align: center;
+    cursor: pointer;
+    visibility: hidden;
+    color: #333;
+    font-size: 28px;
+    line-height: 35px;
+}
+.default-btn,
+.default-btn:hover,
+.default-btn:focus,
+.default-btn:active {
+    background: #008bdb;
+    color: #ffffff;
+    letter-spacing: 0px;
+    font-size: 16px;
+    padding: 10px;
+    display: inline-block;
+    max-width: 200px;
+    width: 100%;    
+    text-align: center;
+    margin: 10px 0;
+    border: 0 none;
+    outline: none !important;
+    border-radius: 0;
+}
+.city-wrapper {
+    width: 11%;
+    display: inline-block;
+    background: #f8f8f8;
+    height: 40px;
+    vertical-align: top;
+    color: #333;
+    padding: 11px 10px;
+    line-height: 1.2;
+}
+.form-control {
+    height: 40px;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: normal;    
+}
+.form-control:focus {
+    border-color: #777;
+    outline: 0;
+    -webkit-box-shadow: 0 0 !important;
+}
+.contact-input {
+    display: table;
+    border-collapse: separate;
+    .contact-code {
+        padding: 6px 12px;
+        line-height: 1;
+        text-align: center;
+        display: table-cell;
+        width: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        background-color: white;
+    }
+    .contact-code:first-child {
+        border-right: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .phone {
+        display: table-cell;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+.has-error .contact-code {
+    border-color: #a94442;
+}
+input.search-field {
+    border: 0;
+    border-radius: 0;
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;    
+    padding: 8px 30px 8px 34px;
+}
+.input-container input.search-field {
+    border-left: 1px solid #ddd;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.pac-container:after{
+    display: none;
+}
+.pac-item:first-child,
+.pac-item:hover {
+    background: #ebf2fe;
+}
+.pac-icon-marker {
+    /* display: none; */
+    width: 14px;
+    height: 14px;
+    background: url(/images/search-marker.png) no-repeat;
+    background-size: 16px 14px;
+    /* margin: 0; */
+    margin-right: 0;
+    vertical-align: middle;
+    margin-top: 0;
+}
+.pac-matched {
+    font-weight: 600;
+}
+.pac-item-query,
+.pac-item {
+    font-size: 14px;
+    color: #335b6b;
+    padding: 4px 6px;
+    text-indent: 4px;
+    font-family: $Proxima-Nova;
+}
+.pac-item-query {
+    padding-left: 10px;
+    font-family: $Raleway-SemiBold;
+}
+.btn-social {
+    position: relative;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 75%;
+    font-size: 16px;
+    padding: 5px 15px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+body .btn-google {
+    color: #fff;
+    background-color: #dd4b39;
+    border-color: rgba(0, 0, 0, 0.2);
+    border: 0 none;
+    border-radius: 0;
+    padding: 10px 15px;
+    text-align: center;
+}
+body .btn-facebook {
+    color: #fff;
+    background-color: #517eca;
+    border: 0 none;
+    border-radius: 0;
+    padding: 10px 15px;
+    text-align: center;
+}
+.btn-block + .btn-block {
+    margin-top: 5px;
+}
+.white-page-section {
+    padding: 50px;
+    background: #fff;
+    margin-bottom: 50px;
+}
+.breadcrumb {
+    padding: 20px 0;
+    margin-bottom: 0;    
+    border-radius: 0;
+    background: none;  
+    .breadcrumb-item {
+        font-size: 14px;
+        a {
+            font-family: $Montserrat-Regular;
+            color: #626262;
+        }
+    }  
+    .breadcrumb-item.active{
+        font-family: "Montserrat-Semibold";
+        color: #008bdb;
+    }
+    > li + li:before {        
+        padding-left: 10px;
+    }
+}
+article.aside-container {
+    .aside-left {
+        width: 20%;        
+        position: fixed;
+        height: 100%;
+        background: #fff;
+        h4 {
+            margin-top: 20px;
+        }
+    }
+    .aside-right {
+        width: 80%;
+        margin-left: 20%;
+        h1 {
+            margin-top: 0;
+        }
+    }
+}
+/*----------- Base Css End ---------- */
+
+/*----------- Landing Css End ---------- */
+section.hero-section {
+    height: 650px;
+    background: url("/images/background-1.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+    .container.hero-container {
+        color: $white-color;
+        position: absolute;
+        width: 100%;
+        margin: auto;
+        height: 280px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+    }
+    .search-field {
+        width: 100%;
+        height: 43px;
+    }
+    .home-search-div {
+        max-width: 780px;
+        margin: auto;
+        margin-top: 35px;
+        width: 100%;
+        padding: 0 15px;
+    }
+    .home-search-div .input-container {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        width: 54%;
+        position: relative;
+    }
+    .home-search-div .city-wrapper {
+        width: 18%;
+        height: 43px;
+    }
+    .city-wrapper span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 15px;
+        display: block;
+        width: 100%;
+    }
+    .home-search-div .home-searc-btn {
+        max-width: 105px;
+        margin: 0 0;
+        height: 43px;
+        vertical-align: top;
+    }
+}
+span.search-marker-icon {
+    width: 36px;
+    background: url(/images/search-marker.png) no-repeat;
+    background-size: 18px 17px;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background-position: center;
+}
+.signup-popup-wrapper {
+    button.default-btn,
+    .default-btn:hover {
+        width: 100%;
+        max-width: 100%;
+    }
+    .social-share-container h4 {
+        text-align: left;
+        padding: 0;
+        margin: auto;
+        margin-bottom: 20px;
+        width: 75%;
+        margin-top: 10px;
+    }
+    h3 {
+        margin-bottom: 30px;
+    }
+}
+.auth-box {
+    width: 85%;
+    margin: auto;
+}
+.social-share-container {
+    padding-top: 50px;
+}
+/*----------- Landing Css End ---------- */
+
+/*----------- Home Css Start ---------- */
+.user-locate-btn {
+    width: 25%;
+    text-align: center;    
+    float: left;
+    padding: 6px 0;
+    margin: 16px 0px;
+    line-height: 1;
+    .locate-btn.fa.fa-map-marker {
+        font-size: 22px;
+    }
+    .locate-btn {
+        cursor: pointer;        
+    }
+}
+.main-app {
+    section.auth-header {
+        border-bottom: 1px solid rgba(230,230,230,0.7);
+        background: #fff;
+    }
+}
+.main-app .navbar.navbar-default {
+    .user-name {
+        display: inline-block;
+        margin-right: 20px;
+        font-family: $Raleway-Regular;
+    }
+    .input-container.auto-search-box {
+        width: 70%;
+        float: left;
+        position: relative;
+        margin-left: 4%;
+        input.search-field {
+            border-left: 1px solid #ddd;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 0;
+            border: 0 none;
+            height: auto;
+            padding-top: 21px;
+            padding-bottom: 21px;
+        }
+
+        .clear-btn {            
+            top: 0;
+            line-height: 24px;
+            bottom: 0;
+            margin: auto;
+            height: 22px;
+        }
+    }
+    .input-container.auto-search-box::before,
+    .input-container.auto-search-box::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 30px;
+        background: #e6e6e6;
+        top: 0;
+        bottom: 0;
+        left: -20px;
+        /* right: 0; */
+        margin: auto;
+    }
+    .input-container.auto-search-box::after {
+        right: 0;
+        left: auto;
+    }
+    .navbar-brand {        
+        padding: 20px 0;        
+        min-height: auto;
+        height: auto;
+        font-family: $Raleway-SemiBold;
+    }
+    i.fa.fa-angle-down {
+        font-size: 19px;        
+        text-align: center;
+        color: #626262;        
+    }
+    .navbar-right .dropdown-menu {
+        border-radius: 0;
+        top: 100%;
+        margin-top: 18px;
+        width: 100%;
+        padding: 0;
+    }
+    .navbar-right .dropdown-menu  li a {
+        padding: 10px 20px;
+        font-family: $Montserrat-Regular;
+    }
+}
+.main-app section.filter-section {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+    background: #fff;
+    a {
+        color: #626262;
+    }
+    .filters {
+        margin-right: 10px;
+        font-family: $Montserrat-Regular;
+        font-size: 15px;
+        a:first-child{
+            margin-right: 20px;
+            padding-right: 20px;
+            border-right: 1px solid #e6e6e6;
+        }
+        .fa {
+            color: #888;
+        }
+    }
+}
+section.map-section .map-container {
+    margin: 0 -40px;
+    #mapCanvas {
+        width: 100%;
+        height: 586px;
+    }
+}
+section.grid-section {    
+    background: #eee;
+    .grid-upper-head {
+        margin-bottom: 40px;
+    }
+    .row.pagination-div {
+        margin-top: 50px;
+        .view-by {
+            margin-top: 24px;
+        }
+        .pagination-sm > li > a, .pagination-sm > li > span {
+            padding: 5px 0;
+            font-size: 16px;
+            width: 40px;
+            text-align: center;
+        }
+    }
+    .grid-item {
+        padding: 20px 15px 10px 15px;
+        box-shadow: 0 0.5px 0.5px rgba(0, 0, 0, 0.15);
+        border: 1px solid #e6e6e6;
+        span.center-name {
+            font-size: 26px;
+            font-family: 'Raleway-Light';
+            margin-bottom: 10px;
+            display: block;
+        }
+        .captions.row {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        span.ratings {
+            display: inline-block;
+            background: green;
+            color: #fff;
+            padding: 4px 8px;
+            margin-right: 10px;
+            line-height: 1;
+            text-align: center;
+        }
+        .book-button-section .btn {
+            max-width: 100%;
+        }
+        p {
+            margin-bottom: 0;
+        }        
+    }
+    .grid-item:hover {
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.15);
+    }    
+}
+/*----------- Home Css End ---------- */
+
+/*----------- Partner Css End ---------- */
+    section.partner-hero-section {
+        height: 650px;
+        background: url(/images/background-3.jpg) no-repeat;
+        background-size: cover;
+        position: relative;
+        .container.hero-container {
+            width: 36%;
+            left: auto;
+            height: 410px;
+            right: 40px;
+            top: 40px;
+            position: absolute;            
+            margin: auto;            
+            bottom: 0;            
+            text-align: left;
+        }        
+        .hero-caption {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 0;
+        }
+        .input-container .clear-btn {
+            line-height: 33px;
+        }
+    }
+/*----------- Partner Css End ---------- */
+
+/*----------- Partner-Registration Css Start ---------- */
+span.partner-text {
+    font-size: 16px;
+    padding-left: 8px;
+}
+.auth-box.partner-register .sign-up-form {
+    margin: 40px 0;
+    .location-field {
+        margin-bottom: 40px;
+    }
+    .general-info,
+    .service-center-info {
+        margin-bottom: 30px;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        margin-right: 6px;
+    }
+    .share-btn {
+        padding: 10px;
+        background: gray;
+        color: #fff;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .current-location-div p {
+        margin: 10px 0;
+        color: #999;
+    }
+}
+/*----------- Partner-Registration Css End ---------- */
+
+/*----------- Partner-SignIn Css Start ---------- */
+.partner-sign-in {
+    .aside-left {
+        width: 35%;
+        height: 100%;
+        position: fixed;
+        background: url('/images/sample-bg.jpg');
+    }
+    .aside-right {
+        width: 65%;
+        margin-left: 35%;
+    }
+    section.auth-section {
+        position: relative;
+        top: 50px;       
+        h1 {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+/*----------- Partner-SignIn Css End ---------- */
+
+/*----------- Forgot Css Start ---------- */
+.forgot-page {
+    section.auth-section {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    h1 {
+        margin-bottom: 40px;
+    }
+}
+.auth-header span.fa.fa-home {
+    font-size: 24px;
+}
+/*----------- Forgot Css End ---------- */
+
+
+/*----------- Reset Css Start ---------- */
+.reset-page {
+    section.auth-section {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+    }    
+    h1 {
+        margin-bottom: 40px;
+    }
+}
+/*----------- Reset Css End ---------- */
+
+/*----------- Account Css Start ---------- */
+.account-section {    
+    .edit-profile.fa.fa-pencil-square-o {
+        padding: 20px 0px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .profile.middle {
+        text-align: center;
+        line-height: 1;
+        margin-top: 20px;
+    }
+    form.edit-profile-form {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+/*----------- Account Css Start ---------- */
+
+/*----------- Booking Css Start ---------- */
+.booking-section {
+    .service-center-info {
+        h3.center-name {
+            font-family: 'Raleway-Light';
+            font-size: 26px;
+        }
+        p.center-location {
+            font-size: 16px;
+            color: #999;
+        }
+    }
+    .booking-tabs {
+        margin: 40px 0 10px 0;
+    }
+    button.btn.default-btn.prev-btn {
+        background-color: gray;
+    }
+    button.btn.default-btn.next-btn {
+        float: right;
+    }
+    .booking-track-ul {
+        margin: 40px 0;
+        li {
+            margin-bottom: 20px;
+        }
+        .number {
+            margin-right: 8px;
+        }
+    }
+    ul.nav.nav-tabs {
+        display: none;
+    }
+    .well {
+        background: transparent;
+        min-height: 250px;
+        text-align: center;
+    }
+
+}
+    
+
+/*----------- Booking Css End ---------- */

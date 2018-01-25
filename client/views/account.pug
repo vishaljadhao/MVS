@@ -1,0 +1,95 @@
+extends layout
+
+block content
+
+	article(class="main-app")
+		section.auth-header(ng-controller="CollapseCtrl")
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header.left-section
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand(href='/') Logo							
+							div(class="collapse navbar-collapse navigation",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right.right-section
+									li(ng-controller="DropdownCtrl")
+										div(uib-dropdown,on-toggle="toggled(open)", class="user-dropdown")
+											div.user-name
+												span #{user.fullName}
+											a(href,id="user-dropdown",uib-dropdown-toggle)
+												i(class="fa fa-angle-down",aria-hidden="true")
+											ul(class="dropdown-menu",uib-dropdown-menu,aria-labelledby="user-dropdown")
+												li(role="menuitem")
+													a(href="/") Home
+												li(role="menuitem")
+													a(href="/dashboard") My Dashboard
+												li(role="menuitem")
+													a(href="/auth/signout") Logout
+	article(class="aside-container clearfix main-app")
+		div.aside-left
+			div.container
+				div.row
+					div.col-sm-12
+						h4 Aside Navigation
+		div.aside-right
+			section.breadcrumb-section
+				div.container
+					div.row
+						ol.col-sm-10.col-sm-offset-1.breadcrumb
+							li.breadcrumb-item
+								a(href='/') Home
+							li.breadcrumb-item.active Account
+			section.account-section(ng-controller="UserProfileController")
+				div.container
+					div.row.dashboard-nav
+						div.col-sm-10.col-sm-offset-1.white-page-section
+							h1 My Profile
+							div.profile-data.row
+								div.col-sm-10
+									div.profile-head
+										- var name = user.fullName
+										h2.text-center(ng-init='profileData.fullName = "'+name+'"')
+											span(ng-bind="profileData.fullName") &nbsp;
+									div.profile.middle
+										- var email = user.email
+										p.email(ng-init='profileData.email = "'+email+'"') Email:&nbsp;
+											span(ng-bind="profileData.email") &nbsp;
+										- var phone = user.phoneNo
+										p.phone(ng-init='profileData.phone = "'+phone+'"') Mobile No:&nbsp;
+											span(ng-bind="profileData.phone") &nbsp;
+								div.col-sm-2
+									div.edit-profile(ng-click="ShowHide()", class="fa fa-pencil-square-o")
+							form(name="",class="row edit-profile-form", novalidate, ng-show="IsVisible")
+								div.col-sm-8.col-sm-offset-2
+									div.row.form-row
+										div.form-group.col-sm-12
+											label(for="fullName") Your Name
+											input(type="text",name="fullName",class="form-control",id="fullName",ng-model="profileData.fullName")
+									div.row.form-row
+										div.form-group.col-sm-12
+											label(for="email") Email Address
+											input(type="text",name="email",class="form-control",id="email",ng-model="profileData.email", disabled)
+									div.row.form-row
+										div.form-group.col-sm-12
+											label(for="phone") Mobile Number
+											input(type="text",name="phone",class="form-control",id="phone",ng-model="profileData.phone")
+									div.row.form-row.form-btn-section
+										//- div.form-group.col-sm-6
+										//- 	button(class="btn btn-default form-button gray-button", type="button", ng-click="ShowHide()") Cancel
+										div.form-group.col-sm-6
+											button(class="btn btn-default form-button default-btn", type="submit", ng-click="updateProfile()") Update Changes
+			section(ng-controller="UserSettingsController")
+				div.container
+					div.row
+						div.col-sm-12
+							p(ng-bind="address")
+
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader

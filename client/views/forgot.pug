@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+	article.forgot-page
+		section.auth-header
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand(href='/') Logo
+							div(class="collapse navbar-collapse",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right
+									li
+										a(href='/' class="block") 
+											span(class="fa fa-home")
+		section.auth-section(ng-controller="ForgotPassController")
+			div.container
+				div.row
+					div.col-sm-6.col-sm-offset-3
+						div.auth-box.forgot-box
+							h1.text-center Forgotten your password?
+							p Enter your email address to reset your password.
+							#message
+								if message
+									span.text-center.error-message #{message}
+								if info
+									span.text-center.error-message #{info}
+							form(name="forgotForm",class="forgot-form", method="post", novalidate, action="/auth/forgot")
+							
+								div.row.form-row
+									div.form-group.col-sm-12(ng-class="{'has-error':forgotForm.email.$invalid && submitted}")
+										div.input-container
+											label(for="email") Email Address
+											input(type="email",name="email",class="form-control", id="email", ng-model="email", required)
+
+								div.row.form-row.sign-up-section
+									div.form-group.col-sm-12
+										button(class="btn btn-default form-button default-btn", ng-click="validateForm($event)",type="submit") Reset Password
+
+		

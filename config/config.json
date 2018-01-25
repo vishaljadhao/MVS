@@ -1,0 +1,25 @@
+{
+    "development": {
+        "mongo": {
+            "host": "localhost",
+            "port": "27017",
+            "db": "mvs"
+        },
+        "clientHost": "http://localhost:3000",
+        "mailer": {
+            "from": "info0.mvs@gmail.com",
+            "host": "smtp.gmail.com",
+            "secureConnection": "true",
+            "port": "465",
+            "transportMethod": "SMTP",
+            "authentication": {
+                "username": "info0.mvs@gmail.com",
+                "password": "info@mvs"
+            }
+        },
+        "newUserIntimationRecipients": "vishal75j@gmail.com"
+    },
+    "beta": {
+
+    }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "mvs",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular-file-upload": "^2.5.0",
+    "async": "^2.0.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.15.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "express-mailer": "^0.3.1",
+    "express-session": "^1.14.1",
+    "mongoose": "^4.6.0",
+    "morgan": "~1.7.0",
+    "nodemailer": "^2.6.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.0-beta6",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "nodemon": "^1.11.0"
+  }
+}

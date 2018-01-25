@@ -1,0 +1,88 @@
+doctype html
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9 ]><html class="ie ie9plus" lang="en"> <![endif]-->
+<!--[if !(IE)]><!-->
+html
+  head
+    title= title
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0")
+    link(rel="manifest",href="/manifest.json")
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel="stylesheet",href="/stylesheets/leaflet.css")
+    link(rel='stylesheet', href='/stylesheets/marker-cluster.css')
+    link(rel='stylesheet', href='/stylesheets/leaflet-slider.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(ng-app="mvsApp")
+    block content
+    
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_vvGODqVtBQB_XGBLoqV7Su9D-HZcRCM&libraries=places,geometry")
+    script(src="https://unpkg.com/es6-promise@4.0.5/dist/es6-promise.min.js")
+    script ES6Promise.polyfill();
+    script(src="/vendor/leaflet.js")
+    script(src="/vendor/leaflet-google-base.js")
+    script(src="/vendor/leaflet-marker-cluster.js")
+    script(src="/vendor/leaflet-slider.js")
+    script(src="/vendor/jquery.js")
+    script(src="/vendor/angular.js")
+    script(src="/vendor/angular-animate.js")
+    script(src="/vendor/ui-bootstrap.js")
+    script(src="/vendor/moveit.js")
+
+    script(type="text/javascript",src="/app/env-module.js")
+    script(type="text/javascript",src="/app/app-module.js")
+    script(type="text/javascript",src="/app/app-core.js")
+
+    //Directives
+    script(type="text/javascript",src="/app/directive/loader-directive.js")
+    script(type="text/javascript",src="/app/directive/custom-show-directive.js")
+
+    //Shared
+    script(src="/app/shared/mapster.js")
+
+    //Factories
+    script(type="text/javascript",src="/app/factory/partner-data-factory.js")
+    script(type="text/javascript",src="/app/factory/plot-locations-factory.js")
+    script(type="text/javascript",src="/app/factory/distance-duration-factory.js")
+    script(type="text/javascript",src="/app/factory/pop-up-factory.js")
+    script(type="text/javascript",src="/app/factory/user-address-factory.js")
+    script(type="text/javascript",src="/app/factory/partner-byid-factory.js")
+
+    //Services
+    script(type="text/javascript",src="/app/service/radius-getter-setter-service.js")
+    script(type="text/javascript",src="/app/service/get-distance-service.js")
+    script(type="text/javascript",src="/app/factory/route-direction-factory.js")        
+    script(type="text/javascript",src="/app/service/form-validation-service.js")
+    script(type="text/javascript",src="/app/service/google-autocomplete-service.js")
+    script(type="text/javascript",src="/app/service/get-partners-service.js")
+    script(type="text/javascript",src="/app/service/leaflet-sidebar-service.js")        
+    script(type="text/javascript",src="/app/service/get-userlocation-service.js")
+    script(type="text/javascript",src="/app/service/draw-circle-service.js")
+    script(type="text/javascript",src="/app/service/get-distance-service.js")
+    script(type="text/javascript",src="/app/service/onarea-search-service.js")
+    script(type="text/javascript",src="/app/service/geocode-address-service.js")
+    script(type="text/javascript",src="/app/service/partner-insearch-service.js")
+    script(type="text/javascript",src="/app/service/partner-sort-service.js")
+
+    //Controllers
+    script(type="text/javascript",src="/app/controller/boostrap-controller.js")
+    script(type="text/javascript",src="/app/controller/home-search-controller.js")
+    script(type="text/javascript",src="/app/controller/client-auth-controller.js")
+    script(type="text/javascript",src="/app/controller/partner-auth-controller.js")
+    script(type="text/javascript",src="/app/controller/user-locate-controller.js")
+    script(type="text/javascript",src="/app/controller/map-controller.js")
+    script(type="text/javascript",src="/app/controller/area-search-controller.js")
+    script(type="text/javascript",src="/app/controller/user-profile-controller.js")
+    script(type="text/javascript",src="/app/controller/user-settings-controller.js")
+    script(type="text/javascript",src="/app/controller/booking-controller.js")
+    script(type="text/javascript",src="/app/controller/ongoing-booking-controller.js")     
+    
+    //Common js    
+    script(src="/javascripts/common.js")
+
+    block page-script

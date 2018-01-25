@@ -1,0 +1,65 @@
+extends layout
+
+block content
+
+	article.partner-sign-in
+		div.aside-left
+		div.aside-right
+			section.auth-header
+				div.container
+					div.row
+						div.col-sm-12
+							nav(class="navbar navbar-default",role="navigation")
+								.navbar-header.visible-xs
+									button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+										span.sr-only Toggle navigation
+										span.icon-bar
+										span.icon-bar
+										span.icon-bar
+									a.navbar-brand(href='/partner') Logo |
+										span.partner-text Partner
+								div(class="collapse navbar-collapse",uib-collapse="isNavCollapsed")
+									ul.nav.navbar-nav.navbar-right
+										li
+											a(href='/partner' class="block") 
+												span(class="fa fa-home")
+
+			section.auth-section(ng-controller="PartnerSignInController")
+				div.container
+					div.row
+						div.col-sm-6.col-sm-offset-3
+							div.auth-box
+								h1.text-center Sign In to Your Account
+								#message
+									if message
+										span.text-center.error-message #{message}
+
+								form(name="PartnerSignIn",class="sign-in-form", method="post", novalidate, action="/auth/partner-login")
+								
+									div.row.form-row
+										div.form-group.col-sm-12(ng-class="{'has-error':PartnerSignIn.email.$invalid && submitted}")
+											div.input-container
+												label(for="email") Email Address
+												input(type="email",name="email",class="form-control", ng-model="email",id="email", required)
+
+									div.row.form-row
+										div.form-group.col-sm-12(ng-class="{'has-error':PartnerSignIn.password.$invalid && submitted}")
+											div.input-container
+												label(for="password") Password
+												input(type="password",name="password",class="form-control", ng-model="password",id="password", required)
+
+									div.row.form-row.signin-section
+										div.col-sm-12
+											p.text-left
+												span
+													| Don't have an account? &nbsp;
+												a(href="/partner", class="") Sign Up
+		
+									div.row.form-row.sign-up-section
+										div.form-group.col-sm-12.text-left
+											button(class="btn btn-default form-button default-btn", ng-click="validateForm($event)",type="submit") Sign In
+
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader

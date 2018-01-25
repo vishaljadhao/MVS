@@ -1,0 +1,135 @@
+extends layout
+
+block content
+
+	article
+		section.auth-header
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand(href='/partner') Logo |
+									span.partner-text Partner
+							div(class="collapse navbar-collapse",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right
+									li
+										a(href='/partner' class="block") 
+											span(class="fa fa-home")
+		section.auth-section(ng-controller="PartnerRegisterController")
+			div.container
+				div.row
+					div.col-sm-12
+						div.auth-box.partner-register
+							div.row
+								div.col-sm-10.col-sm-offset-1
+									h1.text-center One last step to get your service center listed
+									p.text-center We makes it easy to enjoy what matters the most in your life
+									#message
+										if message
+											span.text-center.error-message #{message}
+
+									form(name="PartnerRegister",action="/auth/partner-signup", method="POST",class="sign-up-form", novalidate)
+
+										div.row.location-field
+											div.col-sm-5
+												h4 Location Information
+												div.share-location-btn
+													div(class="share-btn", ng-click="GetCurrentLocation()")
+														| Detect Current Location
+											div.col-sm-7.current-location-div
+												p {{address}}
+
+										div.general-info
+											h4 General Information
+
+											div.row.form-row
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.fullName.$invalid && submitted}")
+													div.input-container
+														label(for="fullName") Full Name
+														input(type="text",name="fullName",class="form-control",id="fullName", ng-model="fullName", required)
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.phone.$invalid && submitted}")
+													div.input-container
+														label(for="phone") Mobile Number
+														div.contact-input
+															span.contact-code +91
+															input(type="number",name="phone",class="form-control phone",id="phone", ng-model="phone", ng-minlength="10", ng-maxlength="10",required)
+											
+											div.row.form-row
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.email.$invalid && submitted}")
+													div.input-container
+														label(for="email") Email
+														input(type="email",name="email",class="form-control",id="email", ng-model="email", required)
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.password.$invalid && submitted}")
+													div.input-container
+														label(for="password") Password
+														input(type="password",name="password",class="form-control",id="password",ng-model="password", required)
+
+										div.service-center-info
+											h4.registration-head Service Center Information
+
+											div.row.form-row
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.centerName.$invalid && submitted}")
+													div.input-container
+														label(for="centerName") Service center name
+														input(type="text",name="centerName",class="form-control", ng-model="centerName",id="centerName", required)
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.locality.$invalid && submitted}")
+													div.input-container
+														label(for="locality") Area/Locality
+														input(type="text",name="locality",class="form-control", ng-model="locality",id="locality", required)
+										
+											div.row.form-row
+												div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.basicCharge.$invalid && submitted}")
+													div.input-container
+														label(for="basicCharge") Basic service charges 
+															span.example-text (Ex: ₹250 for bike servicing)
+														input(type="number",name="basicCharge",class="form-control", ng-model="basicCharge",id="basicCharge" required)
+											div.row
+												div.col-sm-12
+													label(for="servicesAvailable") Available Services
+											div.row.form-row
+												//- div.form-group.col-sm-6(ng-class="{'has-error':PartnerRegister.centerImg.$invalid && submitted}")
+												//- 	div.input-container
+												//- 		label(for="centerImg") Profile Photo
+												//- 		input(type='file', accept='image/*', image='image')
+												//- 		img(ng-show='image', ng-src='{{image.url}}', type='{{image.file.type}}')
+												div.form-group.col-sm-6
+													div.input-container.service-selector
+														p
+															input(type="checkbox",name="bikeservice",class="form-control", ng-model="bikeservice",id="bikeservice")
+															label(for="bikeservice") Bike Servicing
+														p
+															input(type="checkbox",name="carService",class="form-control", ng-model="carService",id="carService")
+															label(for="carService") Car servicing
+														
+												div.form-group.col-sm-6
+													div.input-container.service-selector
+														p
+															input(type="checkbox",name="washing",class="form-control", ng-model="washing",id="washing")
+															label(for="washing") Washing
+														p
+															input(type="checkbox",name="detailing",class="form-control", ng-model="detailing",id="detailing")
+															label(for="detailing") Car Detailing
+
+														p
+															input(type="checkbox",name="towing",class="form-control", ng-model="towing",id="towing")
+															label(for="towing") Vehicle towing
+
+										div.hiden-fields
+											input(type="hidden", id="partnerLatLng", name="partnerLatLng")
+										
+										div.row.form-row.sign-up-section
+											div.form-group.col-sm-12
+												p By creating account you agree to MVC&nbsp;
+													a(href="#") Terms and Conditions		
+												button(class="btn btn-default form-button default-btn", ng-click="validateForm($event)",type="submit") Create a new account
+
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader

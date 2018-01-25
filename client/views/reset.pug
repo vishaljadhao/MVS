@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+  article.reset-page
+    section.auth-header
+      div.container
+        div.row
+          div.col-sm-12
+            nav(class="navbar navbar-default",role="navigation")
+              .navbar-header
+                button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/') Logo
+              div(class="collapse navbar-collapse",uib-collapse="isNavCollapsed")
+                ul.nav.navbar-nav.navbar-right                  
+                  li
+                    a(href='/' class="block") 
+                      span(class="fa fa-home")
+
+    section.auth-section(ng-controller="ResetPassController")
+      div.container
+        div.row
+          div.col-sm-6.col-sm-offset-3
+            div.auth-box.forgot-box
+              h1.text-center Reset Password              
+
+              form(name="resetForm",class="reset-form", method="post", novalidate, action="/auth/reset/"+token)
+              
+                div.row.form-row
+                  div.form-group.col-sm-12(ng-class="{'has-error':resetForm.password.$invalid && submitted}")
+                    div.input-container
+                      label(for="password") New Password
+                      input(type="password",name="password",class="form-control",id="password",ng-model="password", required)
+
+                div.row.form-row
+                  div.form-group.col-sm-12(ng-class="{'has-error':resetForm.confirm.$invalid && submitted}")
+                    div.input-container
+                      label(for="confirmPassword") Confirm New Password
+                      input(type="password",name="confirm",class="form-control",id="confirmPassword", ng-model="confirm", required)
+
+                div.row.form-row.sign-up-section
+                  div.form-group.col-sm-12
+                    button(class="btn btn-default form-button default-btn", ng-click="validateForm($event)",type="submit") Update Password    

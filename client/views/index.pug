@@ -1,0 +1,156 @@
+extends layout
+
+block content
+	article
+		header.nav-section(ng-controller="CollapseCtrl",class="index-header")
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand.white(href='/') Logo
+							div(class="collapse navbar-collapse",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right
+									li
+										a(href='/partner') 
+											span List Your Shop
+									li
+										a(href='#') 
+											span Refer &amp; Earn
+									li
+										a(href='#') 
+											span Terms &amp; Policy
+									li(ng-controller="SignUpPopupCtrl")
+										a(href='javascript:void(0)',ng-click="open('lg')", id="authBtn") 
+											span SignIn/SignUp
+		section.hero-section(ng-controller="HomeSearchController")
+			div.container.hero-container
+				div.row
+					div.col-sm-12
+						div.hero-caption
+							h1 Build Things Visually
+							div.home-search-div
+								div.city-wrapper
+									span(ng-bind="cityVal")
+								div.input-container
+									span.search-marker-icon
+									input(type="text",name="search",class="form-control search-field pac-input", ng-model="search",id="pac-input", placeholder="Search location or landmarks")
+									span(title="Clear", class="clear-btn", id="clearBtn") &times;
+								button.default-btn.home-searc-btn(ng-click="searchArea()") Search
+
+	article.popup-article
+		.modal-demo(ng-controller='SignUpPopupCtrl')
+			script(type='text/ng-template', id='signUptemplate.html')
+				#modal-body.modal-body.signup-popup-wrapper
+					.close-btn-wrppaer(ng-click='close()')
+							i(class="fa fa-times",aria-hidden="true")
+					.row
+						.col-sm-6.pull-right.col-xs-12
+							.social-share-container
+								h4 Or Alternatively
+								a.btn.btn-block.btn-social.btn-lg.btn-facebook
+									i(class="fa fa-facebook",aria-hidden="true")
+									| Connect with Facebook
+								a.btn.btn-block.btn-social.btn-lg.btn-google
+									i(class="fa fa-google",aria-hidden="true")
+									| Connect with Google
+
+
+						.col-sm-6.col-xs-12
+							.auth-section(ng-controller="SignInController", cus-show-dir="signUpstatus", slideShowDuration="2000")
+								div.container
+									div.row
+										div.col-sm-12
+											div.auth-box
+												h3.text-center Sign In to Your Account
+												#message
+													if message
+														span.text-center.error-message #{message}
+
+												form(name="signIn",class="sign-in-form", method="post", novalidate, action="/auth/login")
+												
+													div.row.form-row
+														div.form-group.col-sm-12(ng-class="{'has-error':signIn.email.$invalid && submitted}")
+															div.input-container
+																label(for="email") Email
+																input(type="email",name="email",class="form-control", ng-model="email",id="email", required)
+
+													div.row.form-row
+														div.form-group.col-sm-12(ng-class="{'has-error':signIn.password.$invalid && submitted}")
+															div.input-container
+																label(for="password") Password
+																input(type="password",name="password",class="form-control", ng-model="password",id="password", required)
+															a(href="/forgot" class="forgot-pass") Forgot Password?
+
+													div.row.form-row.sign-up-section
+														div.form-group.col-sm-12
+															button(class="btn btn-default form-button default-btn", ng-click="validateForm($event)",type="submit") Sign In
+
+													div.row.form-row.signin-section
+														div.col-sm-12
+															p.text-center
+																span
+																	| Don't have an account? &nbsp;
+																a(href="javascript:void(0)", class="", ng-click="toggle()") Sign Up							
+							.auth-section.signup-section(ng-controller="SignUpController", cus-show-dir="!signUpstatus" ,slideShowDuration="2000")
+								div.container
+									div.row
+										div.col-sm-12
+											h3.text-center Let's get started
+											div.auth-box
+												form(name="signUp",class="sign-up-form", action='/auth/signup', novalidate, method='POST')
+													#message
+														if message
+															span.text-center.error-message #{message}
+														if info
+															span.text-center.error-message #{info}
+													div.row.form-row
+														div.form-group.col-sm-12(ng-class="{'has-error':signUp.fullName.$invalid && submitted}")
+															div.input-container
+																label(for="fullName") Your Name
+																input(type="text",name="fullName",class="form-control",id="fullName", ng-model="fullName", required)
+
+													div.row.form-row
+														div.form-group.col-sm-12(ng-class="{'has-error':signUp.email.$invalid && submitted}")
+															div.input-container
+																label(for="email") Email
+																input(type="email",name="email",class="form-control",id="email", ng-model="email", required)
+
+													div.row.form-row
+														div.form-group.col-sm-12(ng-class="{'has-error':signUp.password.$invalid && submitted}")
+															div.input-container
+																label(for="password") Password
+																input(type="password",name="password",class="form-control",id="password",ng-model="password", required)
+													
+													div.row.form-row
+														div.form-group.col-sm-12(ng-class="{'has-error':signUp.phone.$invalid && submitted}")
+															div.input-container
+																label(for="phone") Mobile Number
+																div.contact-input
+																	span.contact-code +91
+																	input(type="number",name="phone",class="form-control phone",id="phone", ng-model="phone", ng-minlength="10", ng-maxlength="10",required)
+
+
+													div.row.form-row.signup-button-section
+														div.form-group.col-sm-12
+															p.text-center By creating account you agree to MVC&nbsp;
+																a(href="#" class="block") Terms and Conditions
+															button(class="btn btn-default form-button default-btn", type="submit", ng-click="validateForm($event)") Sign Up
+
+													div.row.form-row.signin-section
+														div.col-sm-12
+															p.text-center
+																span
+																	| Already have an account? &nbsp;
+																a(href="javascript:void(0)", class="", ng-click="toggle()") Sign In								
+
+					
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader

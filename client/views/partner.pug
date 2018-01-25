@@ -1,0 +1,74 @@
+extends layout
+
+block content
+	article
+		header.nav-section(ng-controller="CollapseCtrl",class="index-header")
+			div.container
+				div.row
+					div.col-sm-12
+						nav(class="navbar navbar-default",role="navigation")
+							.navbar-header
+								button(type="button",class="navbar-toggle",ng-click="isNavCollapsed = !isNavCollapsed")
+									span.sr-only Toggle navigation
+									span.icon-bar
+									span.icon-bar
+									span.icon-bar
+								a.navbar-brand.white(href='/partner') Logo |
+									span.partner-text Partner
+							div(class="collapse navbar-collapse",uib-collapse="isNavCollapsed")
+								ul.nav.navbar-nav.navbar-right
+									li
+										a(href='/') 
+											span Home
+									li
+										a(href='#') 
+											span Refer &amp; Earn
+									li
+										a(href='#') 
+											span Terms &amp; Policy
+									li
+										a(href='/partner-signin') 
+											span Sign In
+		section.partner-hero-section(ng-controller="PartnerSignUpController")
+			div.container.hero-container
+				div.row
+					div.col-sm-12
+						div.hero-caption
+							h3.text-left.partner-box-heading Become our partner Lorem ipsum dolor sit
+							form(name="PartnerSignUp",class="sign-up-form", action='/partner-registration', novalidate, method='GET')
+								#message
+									if message
+										span.text-center.error-message #{message}
+									if info
+										span.text-center.error-message #{info}								
+								div.row.form-row
+									div.form-group.col-sm-12(ng-class="{'has-error':PartnerSignUp.locality.$invalid && submitted}")
+										div.input-container
+											label(for="pac-input") Area/Locality
+											div.place-div
+												span.search-marker-icon
+												input(type="text",name="locality",class="form-control",id="pac-input",ng-model="locality", required, placeholder="Search location or landmark")
+												span(title="Clear", class="clear-btn", id="clearBtn") &times;
+												input#lng(type="hidden", name="lng", value="")
+												input#lat(type="hidden", name="lat", value="")
+												//- input#areaObj(type="hidden", name="areaObj", value="")
+									div.form-group.col-sm-12(ng-class="{'has-error':PartnerSignUp.phone.$invalid && submitted}")
+										div.input-container
+											label(for="phone") Mobile Number
+											div.contact-input
+												span.contact-code +91
+												input(type="number",name="phone",class="form-control phone",id="phone", ng-model="phone", ng-minlength="10", ng-maxlength="10",required)
+								div.row.form-row
+									div.col-sm-12.text-center
+										button(class="btn btn-default form-button default-btn", type="submit", ng-click="validateForm($event)") List My Shop
+
+								div.row.form-row.signin-section
+									div.col-sm-12
+										p.text-center
+											span
+												| Already have an account? &nbsp;
+											a(href="/partner-signin", class="") Sign In
+	.modal-parent
+		.loading-spiner-holder(data-loading='')
+			.loading-spiner
+				.loader
